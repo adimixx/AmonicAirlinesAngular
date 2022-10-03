@@ -1,0 +1,14 @@
+<div>
+  <div class="mb-3 prose">
+    <span>Hello, Admin</span>
+    <h2 class="m-0 prose-stone">Dashboard</h2>
+  </div>
+
+  <div class="mb-5">
+    <components-modules-office-select-office (selectedOfficeChange)="onSelectedOfficeIdChanged($event)">
+    </components-modules-office-select-office>
+  </div>
+
+  <components-modules-user-datatable-user [officeId]="selectedOfficeId">
+  </components-modules-user-datatable-user>
+</div>

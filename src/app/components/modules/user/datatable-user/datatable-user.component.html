@@ -1,0 +1,25 @@
+<div class="overflow-x-auto" *ngIf="users?.length ?? 0 > 0">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>User Role</th>
+        <th>Email Address</th>
+        <th>Office</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users" [ngClass]="{ 'success': item.active }">
+        <td>{{ item.first_name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.age }}</td>
+        <td>{{ item.role }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.office }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
