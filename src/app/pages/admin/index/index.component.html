@@ -4,9 +4,17 @@
     <h2 class="m-0 prose-stone">Dashboard</h2>
   </div>
 
-  <div class="mb-5">
-    <components-modules-office-select-office (selectedOfficeChange)="onSelectedOfficeIdChanged($event)">
-    </components-modules-office-select-office>
+  <div class="flex justify-between mb-5">
+    <div>
+      <label for="offices" class="mr-3">Office</label>
+      <components-modules-office-select-office
+        (selectedOfficeChange)="onSelectedOfficeIdChanged($event)"
+        [hasAllSelector]="true"
+      >
+      </components-modules-office-select-office>
+    </div>
+
+    <components-modules-user-button-create-user></components-modules-user-button-create-user>
   </div>
 
   <components-modules-user-datatable-user [officeId]="selectedOfficeId">

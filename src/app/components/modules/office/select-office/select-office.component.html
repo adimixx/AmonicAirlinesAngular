@@ -1,8 +1,10 @@
-<div class="d-flex">
-  <label for="offices" class="mr-3">Office</label>
-  <select class="select w-full max-w-xs" name="offices" (ngModelChange)="onChange($event)" [(ngModel)]="selectedOfficeId">
-    <option *ngFor="let items of officeList" [value]="items.id">
-      {{ items.title }}
-    </option>
-  </select>
-</div>
+<select
+  [ngClass]="class"
+  name="offices"
+  (ngModelChange)="onChange($event)"
+  [(ngModel)]="selectedOfficeId"
+>
+  <option *ngFor="let items of officeList" [value]="items.id">
+    {{ items.title }}
+  </option>
+</select>

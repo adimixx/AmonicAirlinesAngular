@@ -13,4 +13,8 @@ export class HttpService {
   getAsync(path: string): Observable<any> {
     return this.http.get(this.baseURL + path);
   }
+
+  postAsync(path: string, body: JSON): Observable<any> {
+    return this.http.post(path, body);
+  }
 }

@@ -1,0 +1,103 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Email Address</span>
+    </label>
+    <input
+      type="email"
+      formControlName="email"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('email')">
+      Please check your Email
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">First Name</span>
+    </label>
+    <input
+      type="text"
+      formControlName="firstName"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('firstName')">
+      Please check your First Name
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Last Name</span>
+    </label>
+    <input
+      type="text"
+      formControlName="lastName"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('lastName')">
+      Please check your Last Name
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Office</span>
+    </label>
+    <components-modules-office-select-office
+      (selectedOfficeChange)="selectedOfficeChange($event)"
+
+    >
+    </components-modules-office-select-office>
+    <input
+      type="hidden"
+      formControlName="officeId"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('office')">
+      Please check your Office
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Birthdate</span>
+    </label>
+    <input
+      type="date"
+      formControlName="birthdate"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('birthdate')">
+      Please check your Birthdate
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Password</span>
+    </label>
+    <input
+      type="password"
+      formControlName="password"
+      class="input w-full input-primary"
+    />
+    <p class="my-2 text-error" *ngIf="validateInputError('password')">
+      Please check your Password
+    </p>
+  </div>
+
+  <div class="flex justify-between">
+    <button
+      type="button"
+      class="p-0 btn btn-link text-error"
+      (click)="onCancelBtnClicked()"
+    >
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Save
+    </button>
+  </div>
+</form>
