@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,15 @@ export class HttpService {
     return this.http.get(this.baseURL + path);
   }
 
-  postAsync(path: string, body: JSON): Observable<any> {
-    return this.http.post(path, body);
+  postAsync(path: string, body: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+    let httpParams = new HttpParams({ fromObject: body });
+
+    return this.http.post(this.baseURL + path, httpParams.toString(), {
+      headers: headers,
+    });
   }
 }

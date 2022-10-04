@@ -19,10 +19,10 @@
     </label>
     <input
       type="text"
-      formControlName="firstName"
+      formControlName="first_name"
       class="input w-full input-primary"
     />
-    <p class="my-2 text-error" *ngIf="validateInputError('firstName')">
+    <p class="my-2 text-error" *ngIf="validateInputError('first_name')">
       Please check your First Name
     </p>
   </div>
@@ -33,10 +33,10 @@
     </label>
     <input
       type="text"
-      formControlName="lastName"
+      formControlName="last_name"
       class="input w-full input-primary"
     />
-    <p class="my-2 text-error" *ngIf="validateInputError('lastName')">
+    <p class="my-2 text-error" *ngIf="validateInputError('last_name')">
       Please check your Last Name
     </p>
   </div>
@@ -47,15 +47,14 @@
     </label>
     <components-modules-office-select-office
       (selectedOfficeChange)="selectedOfficeChange($event)"
-
     >
     </components-modules-office-select-office>
     <input
       type="hidden"
-      formControlName="officeId"
+      formControlName="office_id"
       class="input w-full input-primary"
     />
-    <p class="my-2 text-error" *ngIf="validateInputError('office')">
+    <p class="my-2 text-error" *ngIf="validateInputError('office_id')">
       Please check your Office
     </p>
   </div>

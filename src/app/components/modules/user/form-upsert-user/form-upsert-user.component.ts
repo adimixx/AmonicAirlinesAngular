@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/models/user.service';
 import { ModalService } from 'src/app/services/ui/modal.service';
 
 @Component({
@@ -10,14 +11,18 @@ import { ModalService } from 'src/app/services/ui/modal.service';
 export class FormUpsertUserComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private modalService: ModalService) {}
+  constructor(
+    private fb: FormBuilder,
+    private modalService: ModalService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      officeId: [0, [Validators.required, Validators.min(1)]],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      office_id: [0, [Validators.required, Validators.min(1)]],
       birthdate: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
@@ -32,9 +37,9 @@ export class FormUpsertUserComponent implements OnInit {
   onSubmit(): void {
     if (this.form.status == 'VALID') {
       let data = this.form.value;
-      console.log(data);
-
-
+      this.userService
+        .createUser(data)
+        .then((x) => this.modalService.closeModal());
     }
   }
 
@@ -47,6 +52,6 @@ export class FormUpsertUserComponent implements OnInit {
   }
 
   selectedOfficeChange(value: number) {
-    this.form.controls['officeId']?.setValue(value);
+    this.form.controls['office_id']?.setValue(value);
   }
 }
