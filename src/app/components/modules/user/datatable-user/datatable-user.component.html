@@ -9,16 +9,26 @@
         <th>User Role</th>
         <th>Email Address</th>
         <th>Office</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of users" [ngClass]="{ 'success': item.active }">
+      <tr *ngFor="let item of users" [ngClass]="{ success: item.active }">
         <td>{{ item.first_name }}</td>
         <td>{{ item.last_name }}</td>
         <td>{{ item.age }}</td>
         <td>{{ item.role.title }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.office.title }}</td>
+        <td>
+          <label
+            for="modal-edit-user"
+            class="btn btn-primary modal-button"
+            (click)="onEditBtnClicked(item.id)"
+          >
+            <fa-icon [icon]="faPenToSquare"></fa-icon>
+          </label>
+        </td>
       </tr>
     </tbody>
   </table>

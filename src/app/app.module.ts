@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonCreateUserComponent } from './components/modules/user/button-create-user/button-create-user.component';
 import { FormUpsertUserComponent } from './components/modules/user/form-upsert-user/form-upsert-user.component';
 import { ModalComponent } from './components/templates/modal/modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { ModalComponent } from './components/templates/modal/modal.component';
     FormUpsertUserComponent,
     ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

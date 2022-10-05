@@ -59,7 +59,7 @@
     </p>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="!existingUser">
     <label class="label">
       <span class="label-text">Birthdate</span>
     </label>
@@ -73,7 +73,7 @@
     </p>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="!existingUser">
     <label class="label">
       <span class="label-text">Password</span>
     </label>
@@ -85,6 +85,18 @@
     <p class="my-2 text-error" *ngIf="validateInputError('password')">
       Please check your Password
     </p>
+  </div>
+
+  <div class="mb-3">
+    <label class="label">
+      <span class="label-text">Role</span>
+    </label>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <input type="radio" name="radio-6" class="radio checked:bg-primary" />
+        <span class="label-text">Red pill</span>
+      </label>
+    </div>
   </div>
 
   <div class="flex justify-between">
