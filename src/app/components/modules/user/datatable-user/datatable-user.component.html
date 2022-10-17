@@ -21,15 +21,18 @@
         <td>{{ item.email }}</td>
         <td>{{ item.office.title }}</td>
         <td>
-          <label
-            for="modal-edit-user"
-            class="btn btn-primary modal-button"
-            (click)="onEditBtnClicked(item.id)"
-          >
+          <button (click)="onEditBtnClicked(item.id)" class="btn btn-primary">
             <fa-icon [icon]="faPenToSquare"></fa-icon>
-          </label>
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<components-templates-modal [title]="'Edit User'" #editUserModal>
+  <ng-template #body>
+    <components-modules-user-form-upsert-user [existingUser]="selectedUser">
+    </components-modules-user-form-upsert-user>
+  </ng-template>
+</components-templates-modal>

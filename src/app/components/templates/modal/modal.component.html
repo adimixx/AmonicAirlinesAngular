@@ -1,10 +1,11 @@
-<input type="checkbox" class="modal-toggle" [id]="name" [(ngModel)]="input" />
-<div class="modal">
+<div [ngClass]="modalClass">
   <div class="modal-box">
     <div class="flex justify-between prose">
       <h3 *ngIf="title">{{ title }}</h3>
       <button class="btn btn-sm btn-circle" (click)="closeModal()">X</button>
     </div>
-    <ng-content></ng-content>
+    <div *ngIf="showModal">
+      <ng-container [ngTemplateOutlet]="childBody"></ng-container>
+    </div>
   </div>
 </div>

@@ -1,11 +1,10 @@
-<label for="modal-create-user" class="btn btn-primary modal-button"
-  >Add New User</label
->
+<button type="button" class="btn btn-primary" (click)="open()">
+  Add New User
+</button>
 
-<components-templates-modal
-  [name]="'modal-create-user'"
-  [title]="'Add New User'"
->
-  <components-modules-user-form-upsert-user>
-  </components-modules-user-form-upsert-user>
+<components-templates-modal [title]="'Add New User'" #createUserModal>
+  <ng-template #body>
+    <components-modules-user-form-upsert-user>
+    </components-modules-user-form-upsert-user>
+  </ng-template>
 </components-templates-modal>

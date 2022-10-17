@@ -17,10 +17,11 @@ import { UserService } from 'src/app/services/models/user.service';
 })
 export class DatatableUserComponent implements OnInit {
   @Input() officeId: number = 0;
-  @ViewChild(ModalComponent) modal?: ModalComponent;
   users: Array<user> = [];
   faPenToSquare = faPenToSquare;
   selectedUser?: user;
+
+  @ViewChild('editUserModal') editUserModal!: ModalComponent;
 
   constructor(private userService: UserService) {}
 
@@ -37,6 +38,7 @@ export class DatatableUserComponent implements OnInit {
 
   onEditBtnClicked(id: number): void {
     this.selectedUser = this.users.filter((x) => x.id == id)[0];
+    this.editUserModal.openModal();
   }
 
   protected getAllUsers(officeId: number = 0): void {

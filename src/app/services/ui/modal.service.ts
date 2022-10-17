@@ -11,6 +11,10 @@ export class ModalService {
     this.modalSubject.next(false);
   }
 
+  openModal(): void {
+    this.modalSubject.next(true);
+  }
+
   closeModal(): void {
     this.modalSubject.next(false);
   }

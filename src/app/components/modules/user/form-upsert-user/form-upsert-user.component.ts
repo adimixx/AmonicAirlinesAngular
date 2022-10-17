@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +16,7 @@ import { ModalService } from 'src/app/services/ui/modal.service';
   templateUrl: './form-upsert-user.component.html',
   styleUrls: ['./form-upsert-user.component.css'],
 })
-export class FormUpsertUserComponent implements OnInit {
+export class FormUpsertUserComponent implements OnInit, OnDestroy{
   @Input() existingUser?: user;
   form!: FormGroup;
   propRoles: role[] = [];
@@ -27,6 +27,9 @@ export class FormUpsertUserComponent implements OnInit {
     private userService: UserService,
     private roleService: RoleService
   ) {}
+
+  ngOnDestroy(): void {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
