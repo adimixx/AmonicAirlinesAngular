@@ -1,4 +1,11 @@
-import { AfterContentInit, AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +23,7 @@ import { ModalService } from 'src/app/services/ui/modal.service';
   templateUrl: './form-upsert-user.component.html',
   styleUrls: ['./form-upsert-user.component.css'],
 })
-export class FormUpsertUserComponent implements OnInit, OnDestroy{
+export class FormUpsertUserComponent implements OnInit, OnDestroy {
   @Input() existingUser?: user;
   form!: FormGroup;
   propRoles: role[] = [];
@@ -28,8 +35,7 @@ export class FormUpsertUserComponent implements OnInit, OnDestroy{
     private roleService: RoleService
   ) {}
 
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -48,7 +54,10 @@ export class FormUpsertUserComponent implements OnInit, OnDestroy{
     });
 
     if (this.existingUser != null) {
-      this.roleService.getRoles().subscribe((x) => (this.propRoles = x));
+      this.roleService.getRoles().subscribe((x) => {
+        this.propRoles = x;
+        console.log(this.propRoles);
+      });
       this.form.addControl(
         'role_id',
         new FormControl(this.existingUser.role_id, [Validators.required])

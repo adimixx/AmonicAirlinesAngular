@@ -92,10 +92,18 @@
       <span class="label-text">Role</span>
     </label>
     <div class="form-control">
-      <label class="label cursor-pointer">
-        <input type="radio" name="radio-6" class="radio checked:bg-primary" />
-        <span class="label-text">Red pill</span>
-      </label>
+      <ng-container *ngFor="let item of propRoles">
+        <label class="label justify-start gap-2 cursor-pointer">
+          <input
+            type="radio"
+            name="role_id"
+            [value]="item.id"
+            formControlName="role_id"
+            class="radio checked:bg-primary"
+          />
+          <span class="label-text text-left">{{ item.title }}</span>
+        </label>
+      </ng-container>
     </div>
   </div>
 
