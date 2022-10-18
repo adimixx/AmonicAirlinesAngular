@@ -46,14 +46,10 @@
       <span class="label-text">Office</span>
     </label>
     <components-modules-office-select-office
-      (selectedOfficeChange)="selectedOfficeChange($event)"
+      formName="office_id"
+      [formGroup]="form"
     >
     </components-modules-office-select-office>
-    <input
-      type="hidden"
-      formControlName="office_id"
-      class="input w-full input-primary"
-    />
     <p class="my-2 text-error" *ngIf="validateInputError('office_id')">
       Please check your Office
     </p>

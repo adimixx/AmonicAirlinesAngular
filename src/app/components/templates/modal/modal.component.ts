@@ -22,18 +22,22 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.modalClass = ['modal'];
-    this.modalService.modalSubject.subscribe((x) => (this.showModal = x));
+    this.modalService.modalSubject.subscribe((x) =>
+      this.operateModalVisibility(x)
+    );
   }
 
   openModal(): void {
-    this.showModal = true;
-    this.modalClass.push('modal-open');
-    // this.modalService.openModal();
+    this.modalService.openModal();
+    this.modalClass = ['modal', 'modal-open'];
   }
 
   closeModal(): void {
-    this.showModal = false;
-    this.modalClass = this.modalClass.filter((x) => x != 'modal-open');
-    // this.modalService.closeModal();
+    this.modalService.closeModal();
+  }
+
+  protected operateModalVisibility(show: boolean) {
+    this.showModal = show;
+    this.modalClass = ['modal'];
   }
 }

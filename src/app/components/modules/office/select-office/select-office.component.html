@@ -1,10 +1,25 @@
-<select
-  [ngClass]="class"
-  name="offices"
-  (ngModelChange)="onChange($event)"
-  [(ngModel)]="selectedOfficeId"
->
-  <option *ngFor="let items of officeList" [value]="items.id">
-    {{ items.title }}
-  </option>
-</select>
+<div *ngIf="formGroup" [formGroup]="formGroup">
+  <select
+    [ngClass]="class"
+    [name]="formName"
+    [formControlName]="formName"
+    (ngModelChange)="onChange($event)"
+  >
+    <option *ngFor="let items of officeList" [value]="items.id">
+      {{ items.title }}
+    </option>
+  </select>
+</div>
+
+<ng-container *ngIf="!formGroup">
+  <select
+    [ngClass]="class"
+    [name]="formName"
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="selectedOfficeId"
+  >
+    <option *ngFor="let items of officeList" [value]="items.id">
+      {{ items.title }}
+    </option>
+  </select>
+</ng-container>

@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { firstValueFrom, Observable, Subject } from 'rxjs';
 import { user } from 'src/app/models/user';
 import { HttpService } from '../http.service';
 
@@ -32,5 +32,9 @@ export class UserService {
         reject(error);
       }
     });
+  }
+
+  updateUser(id: number, data: user): Observable<user> {
+    return this.http.put('users/' + id, data);
   }
 }

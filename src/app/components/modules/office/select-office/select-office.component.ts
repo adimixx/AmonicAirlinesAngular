@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { concat } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 import { office } from 'src/app/models/office';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -11,9 +11,11 @@ import { HttpService } from 'src/app/services/http.service';
 export class SelectOfficeComponent implements OnInit {
   officeList: Array<office> = [];
   public selectedOfficeId: number = 0;
+  @Input() formName: string = 'office';
   @Input() class: Iterable<string> = [];
   @Input() hasAllSelector: boolean = false;
   @Output() public selectedOfficeChange = new EventEmitter<number>();
+  @Input() formGroup?: FormGroup;
 
   constructor(private http: HttpService) {}
 
